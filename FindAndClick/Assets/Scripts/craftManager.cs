@@ -3,11 +3,13 @@ using System;
 
 public class craftManager : MonoBehaviour
 {
+    [SerializeField] private GameObject resultSlot;
+    [SerializeField] private swaper swaper;
+    [SerializeField] private Transform hierarchy;
+
     [SerializeField] private slot[] slots;
     [SerializeField] private string[] recieps;
-    [SerializeField] private GameObject[] craftableItems;
-
-    [SerializeField] private GameObject resultSlot;
+    [SerializeField] private GameObject[] craftableItems;    
 
     public void Craft()
 	{
@@ -21,6 +23,7 @@ public class craftManager : MonoBehaviour
             }            
 		}
 
+        Debug.Log(_result);
         int j = -1;
 
         foreach (string s in recieps)
@@ -28,7 +31,8 @@ public class craftManager : MonoBehaviour
             j++;
             if (s == _result)
 			{
-                Instantiate(craftableItems[j], resultSlot.GetComponent<RectTransform>().position, Quaternion.identity, FindObjectOfType<Canvas>().transform);
+                Instantiate(craftableItems[j], resultSlot.GetComponent<RectTransform>().position, Quaternion.identity, hierarchy);
+                swaper.Swap();
                 
                 foreach (slot g in slots)
 				{

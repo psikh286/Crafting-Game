@@ -13,12 +13,14 @@ public class drag : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDrag
 
 	private void Awake()
 	{
+		canvas = FindObjectOfType<Canvas>();
 		rectTransform = GetComponent<RectTransform>();
 		canvasGroup = GetComponent<CanvasGroup>();
 	}
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
+		transform.SetAsLastSibling();
 		if (_slot != null)
 		{
 			_slot.currentItem = null;

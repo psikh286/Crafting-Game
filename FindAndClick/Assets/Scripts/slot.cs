@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 public class slot : MonoBehaviour, IDropHandler
 {
 	public GameObject currentItem;
-	public int index;
 
 	public void OnDrop(PointerEventData eventData)
 	{

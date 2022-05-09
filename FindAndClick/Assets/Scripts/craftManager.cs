@@ -32,7 +32,10 @@ public class craftManager : MonoBehaviour
             if (s == _result)
 			{
                 Instantiate(craftableItems[j], resultSlot.GetComponent<RectTransform>().position, Quaternion.identity, hierarchy);
-                swaper.Swap();
+                if (craftableItems[j] == swaper.requiredItem)
+				{
+                    swaper.Swap();
+				}
                 
                 foreach (slot g in slots)
 				{

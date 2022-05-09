@@ -21,6 +21,7 @@ public class drag : MonoBehaviour, IPointerDownHandler, IDragHandler, IBeginDrag
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		transform.SetAsLastSibling();
+		cantDrop.selectedItem = rectTransform.anchoredPosition;
 		if (_slot != null)
 		{
 			_slot.currentItem = null;

@@ -1,10 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class spawner : MonoBehaviour
 {
+	public float levelTime;
+
 	[SerializeField] private Transform hierarchy;
+	[SerializeField] private end end;
 	[SerializeField] private GameObject[] items;
 	[SerializeField] private GameObject[] randomItems;
 
@@ -18,21 +20,19 @@ public class spawner : MonoBehaviour
 	}
 
 	private IEnumerator Spawn()
-	{
-		int minute = 0;
+	{		
 		while (true)
-		{
-			if (minute == 60)
-			{
-				Destroy(hierarchy.gameObject);
-				StopAllCoroutines();
-			}
-
+		{			
 			InitialSpawn(1);		
 
-			yield return new WaitForSeconds(5f);
-			minute += 5;						
+			yield return new WaitForSeconds(5f);								
 		}		
+	}
+
+	public void End()
+	{
+		Destroy(hierarchy.gameObject);
+		StopAllCoroutines();
 	}
 
 	private void InitialSpawn(int index)
